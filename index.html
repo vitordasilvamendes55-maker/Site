@@ -3,65 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAZE STUDIOS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <meta name="description" content="Haze Team — Especialistas em SA-MP Mobile, conversão de mapas, launchers e soluções para servidores.">
+    <meta name="keywords" content="SA-MP, SA-MP Mobile, conversão de mapas, launchers, servidores, Haze Team">
+    <title>Haze Team — SA-MP Mobile, Mapas e Soluções para Servidores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {margin:0; padding:0; box-sizing:border-box; font-family:sans-serif;}
-        body {background-color:#0b0b0f; color:#f0f0f0; min-height:100vh; padding:40px 20px;}
-        .container {max-width:480px; margin:0 auto;}
-        .top-icon {font-size:42px; color:#9d4edd; margin-bottom:40px;}
-        h1 {font-size:30px; margin-bottom:30px; color:#e9e9eb;}
-        .card {background:linear-gradient(135deg,#2b1055 0%,#471a8f 100%); border-radius:24px; padding:35px 25px; margin-bottom:35px;}
-        .card h2 {font-size:26px; line-height:1.3; margin-bottom:20px;}
-        .purple-text {color:#c77dff;}
-        .card p {font-size:16px; color:#d8d8e0; line-height:1.5; margin-bottom:30px;}
-        .btn {display:block; background-color:#f0e6ff; color:#1a1a20; font-size:17px; font-weight:600; border-radius:50px; padding:14px 30px; text-align:center; text-decoration:none; cursor:pointer;}
-        .btn-roxo {background:linear-gradient(135deg,#9d4edd 0%,#7b2cbf 100%); color:#fff; margin-top:15px;}
-        .section {margin-top:40px;}
-        .section h3 {font-size:20px; margin-bottom:18px; color:#c77dff;}
-        .jogo-card {background-color:#1a1a27; border-radius:16px; padding:18px; margin-bottom:12px; border-left:3px solid #9d4edd;}
-        .jogo-card h4 {font-size:18px; margin-bottom:6px;}
-        .jogo-card p {font-size:14px; color:#b0b0c0; margin-bottom:12px;}
-        .em-dev {opacity:0.7;}
-        .rodape {margin-top:60px; text-align:center; font-size:22px; font-weight:bold;}
-        .vermelho {color:#ff3333;}
+        * { font-family: 'Inter', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            background: linear-gradient(135deg, #05050a 0%, #0f172a 50%, #1e1b4b 100%); 
+            color: #e0e7ff; 
+            min-height: 100vh;
+        }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(99, 102, 241, 0.18); }
+        .glass-card { background: rgba(30, 27, 75, 0.35); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(129, 140, 248, 0.15); border-radius: 16px; transition: all 0.35s ease; }
+        .glass-card:hover { border-color: rgba(129, 140, 248, 0.4); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(79, 70, 229, 0.15); }
+        .text-gradient { background: linear-gradient(90deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .btn-primary { background: linear-gradient(90deg, #4f46e5, #7c3aed); color: white; padding: 14px 32px; border-radius: 12px; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35); }
+        .btn-outline { border: 1px solid rgba(129, 140, 248, 0.5); color: #c7d2fe; padding: 14px 32px; border-radius: 12px; font-weight: 600; background: transparent; cursor: pointer; transition: all 0.3s; }
+        .btn-outline:hover { background: rgba(99, 102, 241, 0.15); border-color: #818cf8; }
+        section { padding: 80px 24px; max-width: 1280px; margin: 0 auto; }
+        h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 16px; text-align: center; }
+        h2 span { color: #818cf8; }
+        .section-subtitle { text-align: center; color: #94a3b8; max-width: 700px; margin: 0 auto 48px; font-size: 1.1rem; }
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 24px; }
+        .header-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.3rem; color: white; text-decoration: none; }
+        .logo svg { transition: transform 0.3s; }
+        .logo:hover svg { transform: rotate(10deg); }
+        nav.desktop-nav { display: flex; align-items: center; gap: 28px; }
+        nav.desktop-nav a { color: #cbd5e1; text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+        nav.desktop-nav a:hover { color: #a5b4fc; }
+        .menu-toggle { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
+        .mobile-nav { position: fixed; top: 70px; left: 0; right: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px); padding: 24px; z-index: 999; transform: translateY(-150%); transition: transform 0.3s ease-in-out; border-bottom: 1px solid rgba(99, 102, 241, 0.2); }
+        .mobile-nav.open { transform: translateY(0); }
+        .mobile-nav a { display: block; color: #cbd5e1; text-decoration: none; padding: 14px 0; font-size: 18px; border-bottom: 1px solid rgba(148, 163, 184, 0.1); }
+        .mobile-nav a:last-child { border-bottom: none; }
+        .hero { padding-top: 160px; padding-bottom: 120px; min-height: 100vh; display: flex; align-items: center; }
+        .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; width: 100%; }
+        .hero h1 { font-size: 3.8rem; line-height: 1.15; margin-bottom: 28px; font-weight: 800; }
+        .hero p { font-size: 1.2rem; color: #a5b4fc; margin-bottom: 36px; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 50px; }
+        .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .stat-card { background: rgba(30, 27, 75, 0.35); border: 1px solid rgba(129, 140, 248, 0.15); border-radius: 12px; padding: 18px; text-align: center; transition: all 0.3s; }
+        .stat-card:hover { border-color: rgba(129, 140, 248, 0.4); }
+        .stat-card h3 { color: #818cf8; font-weight: 600; margin-bottom: 6px; font-size: 1rem; }
+        .stat-card p { color: #94a3b8; font-size: 0.85rem; }
+        .feature-icon { width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+        .feature-card { padding: 32px; }
+        .feature-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; }
+        .feature-card p { color: #94a3b8; line-height: 1.7; }
+        .process-line { position: relative; }
+        .process-line::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, #4f46e5, #7c3aed); z-index: 0; }
+        .process-step { position: relative; z-index: 1; text-align: center; }
+        .process-number { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #4f46e5, #7c3aed); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 20px; }
+        .project-card { overflow: hidden; }
+        .project-banner { height: 180px; background: linear-gradient(135deg, #312e81, #5b21b6); display: flex; align-items: center; justify-content: center; }
+        .project-content { padding: 24px; }
+        .project-tag { font-size: 0.8rem; color: #a5b4fc; font-weight: 500; margin-bottom: 8px; display: inline-block; }
+        .project-content h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+        .project-content p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 14px; line-height: 1.6; }
+        .status-badge { font-size: 0.8rem; padding: 5px 14px; border-radius: 999px; background: rgba(79, 70, 229, 0.25); color: #c7d2fe; display: inline-block; }
+        .team-card { padding: 32px; text-align: center; }
+        .team-icon { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, rgba(79,70,229,0.3), rgba(124,58,237,0.3)); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+        .stats-section { background: rgba(30, 27, 75, 0.35); border: 1px solid rgba(129, 140, 248, 0.15); border-radius: 24px; padding: 60px 40px; text-align: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+        .stats-number { font-size: 3.5rem; font-weight: 700; color: #818cf8; margin-bottom: 10px; }
+        .stats-label { color: #94a3b8; font-size: 1rem; }
+        details { background: rgba(30, 27, 75, 0.35); border: 1px solid rgba(129, 140, 248, 0.15); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        summary { padding: 22px 24px; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '+'; font-size: 1.5rem; color: #818cf8; transition: transform 0.2s; }
+        details[open] summary::after { content: '−'; }
+        details p { padding: 0 24px 22px; color: #94a3b8; line-height: 1.7; }
+        input, select, textarea { 
+            background: rgba(15, 23, 42, 0.6); 
+            border: 1px solid rgba(99, 102, 241, 0.3); 
+            border-radius: 10px; 
+            padding: 15px 18px; 
+            color: white; 
+            font-size: 1rem;
+            width: 100%;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #6366f1; }
+        label { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 8px; display: block; font-weight: 500; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .contact-links { display: flex; justify-content: center; gap: 20px; margin-top: 32px; flex-wrap: wrap; }
+        .contact-link { display: flex; align-items: center; gap: 10px; padding: 14px 24px; background: rgba(30, 27, 75, 0.35); border: 1px solid rgba(129, 140, 248, 0.15); border-radius: 12px; color: #c7d2fe; text-decoration: none; transition: all 0.3s; }
+        .contact-link:hover { border-color: #818cf8; background: rgba(99, 102, 241, 0.1); }
+        footer { padding: 60px 24px 40px; border-top: 1px solid rgba(148, 163, 184, 0.1); margin-top: 40px; }
+        .footer-inner { max-width: 1280px; margin: 0 auto; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { font-weight: 600; margin-bottom: 20px; color: #c7d2fe; }
+        .footer-col a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 12px; transition: color 0.2s; }
+        .footer-col a:hover { color: #a5b4fc; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(148, 163, 184, 0.1); color: #64748b; font-size: 0.9rem; }
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-line::before { display: none; }
+        }
+        @media (max-width: 768px) {
+            nav.desktop-nav, .btn-header { display: none; }
+            .menu-toggle { display: block; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            section { padding: 60px 20px; }
+            h2 { font-size: 1.75rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="top-icon"><i class="fas fa-rocket"></i></div>
-        <h1>Bem-vindos ao HAZE STUDIOS.</h1>
 
-        <div class="card">
-            <h2>Nossa equipe de <span class="purple-text">desenvolvimento de jogos pelo celular</span></h2>
-            <p>A gente faz totalmente no celular. Venha criar e transformar suas ideias em realidade!</p>
-            
-            <!-- BOTÃO 1 - FORMULÁRIO -->
-            <a href="https://form.typeform.com/to/ubzZpDv0" class="btn" target="_blank">
-                Seja um Programador
-            </a>
-        </div>
+<!-- HEADER -->
+<header class="glass">
+    <div class="header-inner">
+        <a href="#inicio" class="logo">
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="16" r="14" fill="url(#logoGrad)"/>
+                <path d="M10 16 L22 16 M16 10 L16 22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
+                        <stop stop-color="#4f46e5"/>
+                        <stop offset="1" stop-color="#7c3aed"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            Haze Team
+        </a>
+        <nav class="desktop-nav">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#processo">Processo</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#equipe">Equipe</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <a href="#contato" class="btn-primary btn-header" style="padding: 10px 22px; font-size: 0.9rem;">Solicitar orçamento</a>
+        <button class="menu-toggle" id="menuBtn">☰</button>
+    </div>
+</header>
 
-        <div class="section">
-            <h3><i class="fas fa-download"></i> Jogos Publicados</h3>
-            <div class="jogo-card">
-                <h4>MARS</h4>
-                <p>Baixe o app Mars na loja Aurora Play</p>
-                <!-- BOTÃO 2 - DOWNLOAD -->
-                <a href="https://auroraplay.vercel.app/details/be61b16a-6002-4915-bb5c-c4bef1e0d742" class="btn btn-roxo" target="_blank">
-                    Baixar Agora
-                </a>
+<!-- MENU MÓVEL -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#processo">Processo</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#equipe">Equipe</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contato">Contato</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+    <div class="hero-inner">
+        <div>
+            <h1>Tecnologia para levar seu <span class="text-gradient">servidor ao próximo nível</span>.</h1>
+            <p>A Haze Team é especializada em SA-MP Mobile, conversão de mapas, desenvolvimento de launchers e soluções personalizadas para servidores.</p>
+            <div class="hero-buttons">
+                <a href="#servicos" class="btn-primary">Conhecer nossos serviços</a>
+                <a href="#contato" class="btn-outline">Falar com a equipe</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card"><h3>SA-MP Mobile</h3><p>Conversão e adaptação</p></div>
+                <div class="stat-card"><h3>Mapas</h3><p>Conversão e otimização</p></div>
+                <div class="stat-card"><h3>Launchers</h3><p>Desenvolvimento e configuração</p></div>
+                <div class="stat-card"><h3>Soluções</h3><p>Projetos personalizados</p></div>
             </div>
         </div>
-
-        <div class="section">
-            <h3>Jogos em Desenvolvimento</h3>
-            <div class="jogo-card em-dev"><h4>EL FUTEBOLL</h4><p>Em breve...</p></div>
-            <div class="jogo-card em-dev"><h4>HAZE SQUAD</h4><p>Em breve...</p></div>
-            <div class="jogo-card em-dev"><h4>HORRO GUYS</h4><p>Em breve...</p></div>
+        <div class="glass-card p-8 text-center">
+            <svg width="90" height="90" viewBox="0 0 80 80" fill="none" style="margin: 0 auto 24px;">
+                <rect x="8" y="12" width="64" height="50" rx="8" stroke="#6366f1" stroke-width="3"/>
+                <circle cx="26" cy="37" r="7" fill="#4f46e5"/>
+                <circle cx="54" cy="37" r="7" fill="#7c3aed"/>
+                <rect x="18" y="62" width="44" height="5" rx="2.5" fill="#6366f1"/>
+                <path d="M20 22 L60 22" stroke="#818cf8" stroke-width="2" stroke-dasharray="4 4"/>
+            </svg>
+            <h3 style="font-size: 26px; font-weight: 700; margin-bottom: 10px;">Desenvolvimento Premium</h3>
+            <p style="color: #94a3b8; margin-bottom: 24px;">Soluções completas para o ecossistema SA-MP</p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                <div style="background: rgba(79,70,229,0.2); border-radius: 10px; padding: 14px;"><strong style="color: #818cf8;">Compatível</strong><br><span style="font-size: 12px; color: #94a3b8;">Mobile e PC</span></div>
+                <div style="background: rgba(124,58,237,0.2); border-radius: 10px; padding: 14px;"><strong style="color: #a78bfa;">Otimizado</strong><br><span style="font-size: 12px; color: #94a3b8;">Alto desempenho</span></div>
+                <div style="background: rgba(109,40,217,0.2); border-radius: 10px; padding: 14px;"><strong style="color: #c4b5fd;">Estável</strong><br><span style="font-size: 12px; color: #94a3b8;">Qualidade garantida</span></div>
+            </div>
         </div>
-
-        <div class="rodape">HAZE<span class="vermelho">STUDIOS</span></div>
     </div>
-</body>
-</html>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+    <h2>Quem <span>somos</span></h2>
+    <p class="section-subtitle">A Haze Team é uma equipe especializada no desenvolvimento e adaptação de projetos para o ecossistema SA-MP, com foco em experiências para dispositivos móveis.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card feature-card">
+            <div class="feature-icon" style="background: rgba(79,70,229,0.2);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+            </div>
+            <h3>Experiência</h3>
+            <p>Equipe focada em soluções para SA-MP e SA-MP Mobile, com domínio completo sobre o ecossistema e necessidades de cada plataforma.</p>
+        </div>
+        <div class="glass-card feature-card">
+            <div class="feature-icon" style="background: rgba(124,58,237,0.2);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                    <path d="M8 21h8m-4-4v4"/>
+                </svg>
+            </div>
+            <h3>Tecnologia</h3>
+            <p>Utilizamos ferramentas e processos modernos para desenvolver e adaptar projetos com qualidade, desempenho e estabilidade.</p>
+        </div>
+        <div class="glass-card feature-card">
+            <div class="feature-icon" style="background: rgba(109,40,217,0.2);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2">
+                    <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                </svg>
+            </div>
+            <h3>Personalização</h3>
+            <p>Cada projeto recebe soluções específicas de acordo com suas necessidades. Nada genérico, feito sob medida para o seu servidor.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" style="background: linear-gradient(180deg, transparent, rgba(30,27,75,0.2), transparent);">
+    <h2>Nossas <span>especialidades</span></h2>
+    <p class="section-subtitle">Tudo o que você precisa para criar, adaptar e manter um servidor de qualidade no SA-MP Mobile.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass-card feature-card">
+            <div class="feature-icon" style="background: rgba(79,70,229,0.2);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2">
+                    <path d="M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 1.447-.894L9 7m0 13l6-3m-6 3V7m6 10 4.553 2.276A1 1 0 0 0 21 18.382V7.618a1 1 0 0 0-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                </svg>
+            </div>
+            <h3>Conversão de Mapas</h3>
+            <p>Conversão e adaptação de mapas para SA-MP Mobile, buscando compatibilidade, organização e máximo desempenho em dispositivos móveis.</p>
+        </div>
+        <div class="glass-card feature-card">
+            <div class="feature-icon" style="background: rgba(124,58,237,0.2);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2">
+                    <rect x="4" y="4" width="16" height="16" rx="2"/>
+                    <path d="M9 12h6M12 9v6"/>
+                </svg>
+            </div>
+            <h3>Desenvolvimento de Launchers</h3>
+            <p>Desenvolvimento e personalização de launchers para facilitar o acesso dos jogadores ao seu servidor, com interface moderna e funcionalidades práticas.</p>
+        </div>
+        <div class="glass-card feature-card">
+            <div class="feature-icon" style="background: rgba(109,40,217,0.2);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="2">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <path d="M12 18h.01"/>
+                </svg>
+            </div>
+            <h3>Adaptação para Mobile</h3>
+            <p>Adaptação de projetos e recursos para proporcionar a melhor experiência possível em dispositivos móveis, ajustando controles, interface e desempenho.</p>
+        </div>
+        <div class="glass-card feature-card">
+            <div class="feature-icon" style="background: rgba(59,130,246,0.2);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+            </div>
+            <h3>Otimização</h3>
+            <p>Organização e otimização de recursos para melhorar o desempenho, tempo de carregamento e estabilidade do servidor em todas as plataformas.</p>
+        </div>
+        <div class="glass-card feature-card">
+            <div class="feature-i
